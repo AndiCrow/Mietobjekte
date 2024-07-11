@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Document{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Name der Objekte
+        </button>
+        <ul class="dropdown-menu">
+            {% for objekt in objekte %}
+            <li class="dropdown-submenu">
+                <a class="dropdown-item" tabindex="-1" href="#">{{ objekt.name }}</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{% url 'details' objekt.id %}">Details anzeigen</a></li>
+                    <li class="dropdown-submenu">
+                        <a class="dropdown-item" href="#">Wohnungen anzeigen</a>
+                        <ul class="dropdown-menu">
+                            {% for mieter in objekt.mietern_set.all %}
+                            <li><a class="dropdown-item" href="{% url 'wohnung-details' mieter.id %}">Wohnung {{ mieter.wohnung }} - {{ mieter.vorname }} {{ mieter.nachname }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <main>
+        {% block content %}
+        <!-- Hauptinhalt wird hier eingefügt -->
+        {% endblock %}
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.dropdown-submenu').forEach(function(element) {
+                element.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    if (e.target.nextElementSibling) {
+                        e.target.nextElementSibling.classList.toggle('show');
+                    }
+                });
+            });
+        });
+    </script>
+
+    <style>
+        .dropdown-submenu .dropdown-menu {
+            display: none;
+        }
+        .dropdown-submenu .dropdown-menu.show {
+            display: block;
+            margin-left: 20px;
+            margin-top: -1px;
+        }
+    </style>
+</body>
+</html>

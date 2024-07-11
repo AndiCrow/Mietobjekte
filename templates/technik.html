@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technikdetails für {{ objekt.name }}</title>
+</head>
+<body>
+
+    <h1>Technikdetails für {{ objekt.name }}</h1>
+
+    <h2>Mieter pro Wohnung:</h2>
+    {% for wohnung in wohnungen %}
+    <h3>Wohnung {{ wohnung }}</h3>
+    <ul>
+        {% for mieter in mietern %}
+            {% if mieter.wohnung == wohnung %}
+                <li>{{ mieter.vorname }} {{ mieter.nachname }} - Miete: {{ mieter.monats_miete }} - Kaution: {{ mieter.kaution }}€</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+    {% endfor %}
+
+    <h2>Technik:</h2>
+    <ul>
+        {% for tech in technik %}
+        <li>{{ tech.gegenstand }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'objekte' %}">Zurück zur Liste</a>
+</body>
+</html>

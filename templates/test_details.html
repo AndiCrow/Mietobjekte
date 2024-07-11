@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detailansicht</title>
+</head>
+<body>
+    <h1>Details des Objekts</h1>
+    <p>Name: {{ objekt.name }}</p>
+    <p>Adresse: {{ objekt.address }}</p>
+    <p>Kosten:</p>
+    <ul>
+        {% load custom_filters %}
+        {% for kosten in objekt.kosten_set.all %}
+        <li>{{ kosten.von_wem }}: {{ kosten.kosten }}€
+            {% if kosten.Dokument %}
+                {% if kosten.Dokument.url|is_pdf %}
+                    <a href="{{ kosten.Dokument.url }}" target="_blank">Dokument ansehen (PDF)</a>
+                {% else %}
+                    <img src="{{ kosten.Dokument.url }}" alt="Dokument">
+                {% endif %}
+            {% endif %}
+            ({{ kosten.Datum }})
+        </li>
+        {% endfor %}
+    </ul>
+    <p>Technik:</p>
+    <ul>
+        {% for technik in objekt.technik_set.all %}
+        <li>{{ technik.gegenstand }} in {{ technik.wohnung }}</li>
+        {% endfor %}
+    </ul>
+    <p>Mieter:</p>
+    <ul>
+        {% for mieter in objekt.mietern_set.all %}
+        <li>{{ mieter.vornanme }} {{ mieter.nachname }}, Wohung{{mieter.wohnung}} - Miete: {{ mieter.monats_miethe }}€ - Kaution: {{ mieter.kaution }}€</li>
+        {% endfor %}
+    </ul>
+    <h2>Finanzübersicht:</h2>
+    <p>Gesamtsumme der Miete: {{ gesamtsumme_miete }}€</p>
+    <p>Gesamtsumme der Kosten: {{ gesamtsumme_kosten }}€</p>
+    <p>Gewinn/Verlust: {{ gewinn_verlust }}€</p>
+    <a href="{% url 'objekte' %}">Zurück zur Liste</a>
+</body>
+</html>
