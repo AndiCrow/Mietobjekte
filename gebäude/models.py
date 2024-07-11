@@ -31,8 +31,9 @@ class Kosten(models.Model):
     #einnahmen = models.IntegerField(validators=[zusässige_posetive], blank=True)
     von_wem = models.CharField(max_length=150, blank=True)
     Datum = models.DateField(default= datetime.datetime.now)
-    Dokument = models.ImageField(upload_to="dokument/", blank=True)
-
+    #Dokument = models.ImageField(upload_to="dokument/", blank=True)
+    Dokument = models.FileField(upload_to="dokument/", blank=True)
+    
     def __str__(self):
          return f"Kosten für {self.objekte}"
 
