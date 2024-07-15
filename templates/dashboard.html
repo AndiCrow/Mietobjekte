@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Dashboard</h1>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Objekte</h3>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        {% for objekt in objekte %}
+                        <li>{{ objekt.name }} - {{ objekt.address }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Finanzübersicht</h3>
+                </div>
+                <div class="card-body">
+                    <p>Gesamtsumme der Miete: {{ gesamtsumme_miete }}€</p>
+                    <p>Gesamtsumme der Kosten: {{ gesamtsumme_kosten }}€</p>
+                    <p>Gewinn/Verlust: {{ gewinn_verlust }}€</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Chart</h3>
+                </div>
+                <div class="card-body">
+                    {{ chart|safe }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detailansicht</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load custom_filters %}
+{% block title %} Details of the Object {% endblock %}
+
+{% block content %}
+
     <h1>Details des Objekts</h1>
     <p>Name: {{ objekt.name }}</p>
     <p>Adresse: {{ objekt.address }}</p>
@@ -42,5 +40,5 @@
     <p>Gesamtsumme der Kosten: {{ gesamtsumme_kosten }}€</p>
     <p>Gewinn/Verlust: {{ gewinn_verlust }}€</p>
     <a href="{% url 'objekte' %}">Zurück zur Liste</a>
-</body>
-</html>
+
+{% endblock %}
