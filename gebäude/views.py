@@ -3,9 +3,13 @@ from rest_framework.response import Response
 from rest_framework import status
 from .models import Objekte, Kosten, Mietern, Technik
 from .serializer import ObjekteSerializer
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.db import models
 import pandas as pd
+from .forms import ObjekteForm, MieternForm, KostenForm, TechnikForm
+
+
+
 
 class ObjekteView(APIView):
     def get(self, request):
@@ -118,3 +122,50 @@ def dashboard(request):
         'chart': chart,
     }
     return render(request, 'dashboard.html', context)
+
+
+def eintragen_objekte(request):
+    if request.method == 'POST':
+        form = ObjekteForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('objekte')
+        else:
+            print("Form is not valid")
+            print(form.errors)
+    else:
+        form = ObjekteForm()
+    return render(request, 'form_eintragen.html', {'form': form})
+
+
+def eintragen_kosten(request):
+    if request.method == 'POST':
+        form = KostenForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('objekte')
+    else:
+        form = KostenForm()
+    return render(request, 'form_eintragen_kosten.html', {'form': form})
+
+
+def eintragen_mieter(request):
+    if request.method == 'POST':
+        form = MieternForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('objekte')
+    else:
+        form = MieternForm()
+    return render(request, 'form_eintragen_mieter.html', {'form': form})
+
+
+def eintragen_technik(request):
+    if request.method == 'POST':
+        form = TechnikForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('objekte')
+    else:
+        form = TechnikForm()
+    return render(request, 'form_eintragen_technik.html', {'form': form})

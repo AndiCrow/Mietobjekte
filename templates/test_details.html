@@ -3,7 +3,7 @@
 {% block title %} Details of the Object {% endblock %}
 
 {% block content %}
-
+<div class="d-flex flex-column align-items-center">
     <h1>Details des Objekts</h1>
     <p>Name: {{ objekt.name }}</p>
     <p>Adresse: {{ objekt.address }}</p>
@@ -40,5 +40,5 @@
     <p>Gesamtsumme der Kosten: {{ gesamtsumme_kosten }}€</p>
     <p>Gewinn/Verlust: {{ gewinn_verlust }}€</p>
     <a href="{% url 'objekte' %}">Zurück zur Liste</a>
-
+</div>
 {% endblock %}

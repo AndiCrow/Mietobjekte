@@ -3,11 +3,11 @@
 {% block title %}Dashboard{% endblock %}
 
 {% block content %}
-<div class="container mt-5">
+<div class="container d-flex flex-column align-items-center mt-5">
     <h1>Dashboard</h1>
-    <div class="row">
+    <div class="row w-100 justify-content-center">
         <div class="col-md-6">
-            <div class="card">
+            <div class="card mb-4">
                 <div class="card-header">
                     <h3>Objekte</h3>
                 </div>
@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="col-md-6">
-            <div class="card">
+            <div class="card mb-4">
                 <div class="card-header">
                     <h3>Finanzübersicht</h3>
                 </div>
@@ -33,9 +33,9 @@
             </div>
         </div>
     </div>
-    <div class="row mt-4">
-        <div class="col-md-12">
-            <div class="card">
+    <div class="row w-100 justify-content-center mt-4">
+        <div class="col-md-10">
+            <div class="card mb-4">
                 <div class="card-header">
                     <h3>Chart</h3>
                 </div>
@@ -45,5 +45,6 @@
             </div>
         </div>
     </div>
+    <a href="{% url 'objekte' %}" class="btn btn-primary mt-3">Zurück zur Liste</a>
 </div>
 {% endblock %}
