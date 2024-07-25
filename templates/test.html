@@ -1,14 +1,65 @@
 {% extends "base.html" %}
 
-{% block title %}Startseite - Meine Webseite{% endblock %}
+{% block title %}Startseite - Home{% endblock %}
 
 {% block content %}
+<div class="container mt-4">
+    <h1>Beschreibung</h1>
+    <p>
+        Das Projekt "Mietobjekte" ermöglicht die Verwaltung von Immobilien, einschließlich der Kosten,
+        technischen Ausstattung und Mieterinformationen über eine benutzerfreundliche Oberfläche. Derzeit
+        erfolgt die Dateneingabe über die Admin-Oberfläche und über die HTML-Oberfläche.
+    </p>
+
+    <h2>Funktionalitäten</h2>
     <ul>
-        <!-- {% for lol in lols %}
         <li>
-            Name der Objekte: <a href="{% url 'details' id=lol.id %}">{{ lol.name }}</a><br>
-            Adresse: {{ lol.address }}
+            <strong>Objektverwaltung:</strong> Verwalte die zentralen Informationen zu den Mietobjekten,
+            einschließlich Name, Adresse und relevanter Details.
         </li>
-        {% endfor %} -->
+        <li>
+            <strong>Kostenmanagement:</strong> Erfasse und verfolge die Kosten und Einnahmen für jedes
+            Mietobjekt. Jeder Kostenposten kann mit einem Dokument verknüpft werden, um Transparenz und
+            Nachvollziehbarkeit zu gewährleisten.
+        </li>
+        <li>
+            <strong>Technikverzeichnis:</strong> Halte eine Übersicht über die technische Ausstattung jedes
+            Mietobjekts. Dies umfasst Details zu den installierten Geräten und technischen Einrichtungen.
+        </li>
+        <li>
+            <strong>Mieterinformationen:</strong> Verwalte Informationen zu den Mietern jedes Objekts,
+            einschließlich ihrer persönlichen Daten, zugewiesener Wohnung und Mietkonditionen wie monatliche
+            Miete und Kaution.
+        </li>
+        <li>
+            <strong>Navigationsmenü:</strong> Eine kombinierte Navbar und ein Dropdown-Menü, implementiert
+            mit Bootstrap und benutzerdefiniertem JavaScript, ermöglichen eine einfache Navigation zwischen
+            allen Mietobjekten. Dadurch können Nutzer schnell und effizient zu jedem gewünschten Objekt
+            navigieren.
+        </li>
     </ul>
+
+    <h2>Datenbank</h2>
+    <p>
+        Das Projekt verwendet SQLite als Datenbankmanagementsystem. SQLite bietet eine einfache,
+        leichtgewichtige Lösung für kleine bis mittelgroße Anwendungen und ist direkt in das Projekt
+        integriert.
+    </p>
+
+    <h2>Beispielanwendungen</h2>
+    <ul>
+        <li>
+            <strong>Beispielhafte Daten:</strong> Das Projekt enthält vordefinierte Beispieldaten, die die
+            Funktionalitäten der Anwendung demonstrieren. Diese Daten sind so strukturiert, dass sie die
+            Verwaltung mehrerer Mietobjekte und deren Attribute zeigen.
+        </li>
+    </ul>
+
+    <h2>Zukünftige Entwicklung</h2>
+    <p>
+        Das Projekt wird kontinuierlich weiterentwickelt. Potenzielle zukünftige Erweiterungen könnten eine
+        benutzerfreundliche Oberfläche für Endbenutzer sowie erweiterte Funktionen zur Berichterstellung und
+        Analyse umfassen.
+    </p>
+</div>
 {% endblock %}
