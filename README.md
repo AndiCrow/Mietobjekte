@@ -1,6 +1,6 @@
 # Mietobjekte Projekt
 ## Beschreibung
-Das Projekt "Mietobjekte" ermöglicht die Verwaltung von Immobilien, einschließlich der Kosten, technischen Ausstattung und Mieterinformationen über eine benutzerfreundliche Oberfläche. Derzeit erfolgt die Dateneingabe ausschließlich über die Admin-Oberfläche.
+Das Projekt "Mietobjekte" ermöglicht die Verwaltung von Immobilien, einschließlich der Kosten, technischen Ausstattung und Mieterinformationen über eine benutzerfreundliche Oberfläche. Derzeit erfolgt die Dateneingabe über die Admin-Oberfläche und über die Html Oberfläche.
 
 ## Funktionalitäten
 - Objektverwaltung: Verwalte die zentralen Informationen zu den Mietobjekten, einschließlich Name, Adresse und relevante Details.
